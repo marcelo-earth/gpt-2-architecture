@@ -27,4 +27,33 @@ This equation is the core of a perceptron, a simple artificial neuron that can b
 
 Adam converges faster than SGD.
 
+But SGD can be better only in giant models...
+
+- **My small example (y = w*x + b):** 2 parameters → Trained in milliseconds
+- **Medium model:** ~100,000 - 1,000,000 parameters → Trained in hours
+- **Large model:** ~25,000,000 parameters (ResNet-50) → Trained in days
+- **Giant model:** ~175,000,000,000 parameters (GPT-3) → Trained for $4.6 million
+
+You can also get better results with SGD by tuning the hyperparameters.
+
+Tuning is testing different values for the hyperparameters to find the best one.
+
+**With Adam (easy):**
+
+```python
+optimizer = Adam(lr=0.001)  # Works 80% of the time
+```
+
+→ Test 2-3 values of lr → 1 day of experiments
+
+**With SGD (difficult):**
+
+You need to test many combinations:
+Try 1: SGD(lr=0.1, momentum=0.9)    → 85% accuracy
+Try 2: SGD(lr=0.01, momentum=0.9)   → 88% accuracy 
+Try 3: SGD(lr=0.1, momentum=0.95)   → 87% accuracy
+Try 4: SGD(lr=0.1, momentum=0.9) + scheduling → 90% accuracy ✓
+→ Test 10-20 combinations → 1-2 weeks of experiments
+
+
 
