@@ -34,4 +34,14 @@ This works if we codified in a fixed way, but if we have a longer sentence, we h
 
 Now, if we use binary coding, that's so much better!, We don't have large values, and we provide information about the position in a very elegant way.
 
+**What is RoPE (Rotary Position Embedding)?**
 
+Indicate the **ORDER** of the words
+
+**Problem:** Without position, the model doesn't know the order
+"The cat chases the dog" ≠ "The dog chases the cat"
+
+**Solution:** ROTATE the embedding according to the position
+"cat" in position 0: [0.8, 0.3]   (no rotation)
+"cat" in position 1: [0.77, 0.38] (rotated 10°)
+"cat" in position 2: [0.72, 0.45] (rotated 20°)
