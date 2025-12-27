@@ -45,3 +45,30 @@ Indicate the **ORDER** of the words
 "cat" in position 0: [0.8, 0.3]   (no rotation)
 "cat" in position 1: [0.77, 0.38] (rotated 10°)
 "cat" in position 2: [0.72, 0.45] (rotated 20°)
+
+## Timeline
+
+ - 2017: Original Transformer (Sinusoidal encoding)
+ - 2019: GPT-2 (absolute position)
+ - 2020: GPT-3 (absolute position)
+
+ - 2021: RoPE published ← Ok, here it is!
+
+ - 2022: GPT-NeoX adopts RoPE (first large use)
+ - 2023: LLaMA makes RoPE mainstream
+ - 2023: GPT-4 released (probably uses RoPE, not confirmed yet)
+ - 2024: RoPE is the standard in the industry (confirmed)
+
+
+## RoPE vs ALiBi
+
+**RoPE** (used in LLaMA, Mistral, Qwen):
+- Rotates the Q and K vectors according to their position
+- Codifica distancia relativa entre tokens
+- Extrapola bien a secuencias más largas que las de entrenamiento
+
+ALiBi (used in BLOOM, MPT):
+- Adds a bias -m × distance to the attention scores
+- Super simple: penalizes tokens further away
+- Each head has a different "m" (some attend further away)
+- Better extrapolation than RoPE for ultra long contexts
