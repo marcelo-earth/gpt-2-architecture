@@ -72,3 +72,17 @@ ALiBi (used in BLOOM, MPT):
 - Super simple: penalizes tokens further away
 - Each head has a different "m" (some attend further away)
 - Better extrapolation than RoPE for ultra long contexts
+
+**ALiBi is NOT better in practice (despite the theory)**
+
+**Although ALiBi has better extrapolation on paper, it has important drawbacks:**
+
+**1. Worse performance on benchmarks**
+- BLOOM (with ALiBi) showed worse perplexity than equivalent models using RoPE
+- In reasoning tasks, ALiBi is clearly inferior
+- The simplicity of the linear bias is too limiting
+
+**2. The linear bias is too rigid**
+- It can only penalize distance in a linear way
+- It does not capture complex positional relationships
+- RoPE allows richer (multidimensional sinusoidal) patterns
